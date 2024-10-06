@@ -1,0 +1,86 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif; /* You can change this to your preferred font */
+}
+
+/* Remove list styles */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove quotes from blockquotes and citations */
+blockquote, q {
+    quotes: none;
+}
+
+/* Remove table border spacing */
+table {
+	margin: 24px 0px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Set default styles for images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure that form elements are styled consistently */
+input, button, textarea, select {
+    font-family: inherit; /* Inherit font from parent */
+    font-size: inherit; /* Inherit font size from parent */
+    line-height: inherit; /* Inherit line height from parent */
+}
+
+/* Add more resets as needed */
+.header
+{
+    width: fit-content;
+    text-align: center;
+    background-color: #ADD8E6;
+    margin: auto;
+    padding: 4px 8px;
+    border: 1px solid;
+    margin-top: 8px;
+    border-radius: 5px;
+}
+.table_container
+{
+	display: flex;
+	justify-content:space-around;
+	width: 100%;
+}
+/* Style cho th */
+th {
+    background-color: #4CAF50; /* Màu nền cho th */
+    color: white; /* Màu chữ */
+    padding: 10px; /* Khoảng cách bên trong */
+    text-align: center; /* Canh trái chữ */
+    width: 100px;
+}
+
+/* Style cho tr */
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Màu nền cho các hàng chẵn */
+}
+
+tr:hover {
+    background-color: #ddd; /* Màu nền khi di chuột qua hàng */
+}
+tr 
+{
+	text-align:center;
+}
+/* Style cho td */
+td {
+    padding: 10px; /* Khoảng cách bên trong cho td */
+}
