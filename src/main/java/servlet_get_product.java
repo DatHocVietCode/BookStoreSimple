@@ -85,9 +85,9 @@ public class servlet_get_product extends HttpServlet {
         }
         
         // Chuyển hướng tới trang cart.jsp
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/cart.jsp");
-//        dispatcher.forward(request, response);
-        response.sendRedirect("cart.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/cart.jsp");
+        dispatcher.forward(request, response);
+        //response.sendRedirect("cart.jsp");
     }
 
 	

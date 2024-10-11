@@ -19,7 +19,7 @@ public class servlet_decrease_number extends HttpServlet {
         String id = request.getParameter("id");
         
         if (id == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID is required");
+            //response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID is required");
             return;
         }
 
@@ -31,10 +31,10 @@ public class servlet_decrease_number extends HttpServlet {
             } 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
+            //response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
         }
 
-        response.sendRedirect("cart.jsp");
+        //response.sendRedirect("cart.jsp");
     }
 
     private void decreaseQuantity(Connection connection, String id) throws SQLException {
@@ -73,25 +73,22 @@ public class servlet_decrease_number extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Chuyển hướng tới doGet
     	String isDelete = request.getParameter("isdelete");
-    	
-    	if (isDelete == null) {
-    		 doGet(request, response);
-    		 return;
+
+    	if ("true".equals(isDelete)) { // Kiểm tra nếu giá trị là "true"
+    	    String id = request.getParameter("id");
+    	    try (Connection connection = createConnection()) {
+    	        deleteProduct(connection, id); // Xóa sản phẩm khỏi giỏ hàng
+    	    } catch (SQLException e) {
+    	        e.printStackTrace();
+    	        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
+    	        return; // Dừng lại nếu có lỗi
+    	    }
+    	} else {
+    	    doGet(request, response); // Nếu không có yêu cầu xóa, xử lý yêu cầu bình thường
     	}
-    	
-    	String id = request.getParameter("id");
-    	try {
-			Connection connection = createConnection();
-			deleteProduct(connection, id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	finally {
-    		response.sendRedirect("index.jsp");
-    		
-		}
+    	response.sendRedirect("cart.jsp");
+
     }
+
 }

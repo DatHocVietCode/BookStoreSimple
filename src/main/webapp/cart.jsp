@@ -38,7 +38,7 @@
 	            <th>Increase</th>
 	            <th>Decrease</th>
 	            <th>Remove product</th>
-	        </tr>
+		    </tr>
 	        <%
 	        Connection connection = null;
 	        Statement statement = null;
@@ -90,9 +90,10 @@
 	        						</td>	
 	        						<td>
 	        							<form action="servlet_decrease_number" method="post">
-	        								<input type="hidden" name="id" value="<%= "isdelete" %>">
-						               		<input type="submit" value="Remove this product">
-	        							</form>
+										    <input type="hidden" name="isdelete" value="true"> <!-- Thay "isdelete" bằng "true" hoặc giá trị logic -->
+										    <input type="hidden" name="id" value="<%= id %>">
+										    <input type="submit" value="Remove this product">
+										</form>
 	        						</td>	
 	        					
 							    </tr>
